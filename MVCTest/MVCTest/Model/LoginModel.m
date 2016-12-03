@@ -22,10 +22,10 @@
 - (void)loginStateWithAccount:(NSString*)account pwd:(NSString*)pwd success:(void(^)())LoginSuccess faile:(void(^)())faile{
 
     if ([account isEqualToString:@"22"]&&[pwd isEqualToString:@"xb"]) {
-        NSLog(@"%@",@"ok");
+        NSLog(@"%@", @"ok");
         LoginSuccess();
     }else{
-        NSLog(@"%@",@"faile");
+        NSLog(@"%@", @"faile");
         faile();
     }
 

@@ -8,6 +8,12 @@
 
 #import "LoginView.h"
 
+@interface LoginView ()
+@property (weak, nonatomic) IBOutlet UITextField *account;
+@property (weak, nonatomic) IBOutlet UITextField *pwd;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@end
+
 @implementation LoginView
 
 /*
@@ -19,15 +25,13 @@
 */
 - (IBAction)login:(id)sender {
     
-    
     if (!_account.hasText||!_pwd.hasText) {
         NSLog(@"弹出提示没有填写");
         return;
     }
     if (self.loginBlock) {
-        _loginBlock(_account.text,_pwd.text);
+        _loginBlock(_account.text, _pwd.text);
     }
-    
     
 }
 

@@ -13,6 +13,7 @@
 {
     LoginModel *Lmodel;
 }
+@property (nonatomic,strong) LoginView *loginView;
 @end
 
 @implementation LoginVC
@@ -23,13 +24,6 @@
     [self initLoginModel];
     [self initLoginView];
 
-//    kWeakSelf(self);
-//    self.loginView.loginBlock = ^(NSString *account ,NSString *pwd){
-//    
-//        [weakself loginaccount:account password:pwd];
-//    
-//    };
-
 }
 
 - (void)initLoginModel{
@@ -38,42 +32,31 @@
     
 }
 
-- (void)loginaccount:(NSString*)account password:(NSString*)password{
-    NSLog(@"%@",password);
-    [[LoginModel shareInstance] loginStateWithAccount:account pwd:password success:^{
-         NSLog(@"%s","pass");
-    } faile:^{
-         NSLog(@"%s","omg,try again");
-    }];
-
-}
-
 - (void)initLoginView{
 
     [self.view addSubview:self.loginView];
 
 }
 
--(LoginView*)loginView{
+- (LoginView*)loginView{
 
     if (!_loginView) {
         LoginView *loginV = [[[NSBundle mainBundle]loadNibNamed:@"LoginView" owner:nil options:nil]objectAtIndex:0];
-        loginV.frame = CGRectMake(0, 0,600, 400);
+        loginV.frame = CGRectMake(0, 0, 600, 400);
         loginV.center = self.view.center;
         _loginView = loginV;
         kWeakSelf(Lmodel);
         _loginView.loginBlock = ^(NSString *account,NSString *pwd){
             [weakLmodel loginStateWithAccount:account pwd:pwd success:^{
-                NSLog(@"%s","pass");
+                NSLog(@"%s", "pass");
             } faile:^{
-                NSLog(@"%s","omg,try again");
+                NSLog(@"%s", "omg,try again");
             }];
         };
 
     }
     return _loginView;
     
-
 }
 
 - (void)didReceiveMemoryWarning {

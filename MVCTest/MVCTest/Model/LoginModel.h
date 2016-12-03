@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface LoginModel : NSObject
-@property (nonatomic,copy) NSString *pwd;
-@property (nonatomic,copy) NSString *account;
+@property (nonatomic, copy) NSString *pwd;
+@property (nonatomic, copy) NSString *account;
 + (instancetype)shareInstance;
 - (void)loginStateWithAccount:(NSString*)account pwd:(NSString*)pwd success:(void(^)())LoginSuccess faile:(void(^)())faile;
 @end

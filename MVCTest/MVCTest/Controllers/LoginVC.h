@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 @class LoginView;
 @interface LoginVC : UIViewController
-@property (nonatomic,strong) LoginView *loginView;
 @end
